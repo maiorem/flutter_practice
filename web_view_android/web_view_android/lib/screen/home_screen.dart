@@ -17,6 +17,8 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: (){
+                // http://
+                // https://
                 if(controller == null) {
                   return;
                 }
