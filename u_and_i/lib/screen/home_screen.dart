@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,19 +16,17 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         bottom: false,
         child: Container(
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            children: [
-              _TopPart(),
-              _BottomPart(),
-            ],
-          )
-        ),
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                _TopPart(),
+                _BottomPart(),
+              ],
+            )),
       ),
     );
   }
 }
-
 
 class _TopPart extends StatelessWidget {
   const _TopPart({Key? key}) : super(key: key);
@@ -66,7 +65,27 @@ class _TopPart extends StatelessWidget {
           ),
           IconButton(
             iconSize: 60.0,
-            onPressed: () {},
+            onPressed: () {
+              showCupertinoDialog(
+                context: context,
+                barrierDismissible: true, //바깥을 탭하면 닫힘
+                builder: (BuildContext context) {
+                  return Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      color: Colors.white,
+                      height: 300.0,
+                      child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (DateTime date) {
+                          print(date);
+                        },
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
             icon: Icon(
               Icons.favorite,
               color: Colors.red,
@@ -86,16 +105,13 @@ class _TopPart extends StatelessWidget {
   }
 }
 
-
 class _BottomPart extends StatelessWidget {
   const _BottomPart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Image.asset(
-          'asset/img/logo.png'
-      ),
+      child: Image.asset('asset/img/logo.png'),
     );
   }
 }
