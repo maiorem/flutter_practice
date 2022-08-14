@@ -9,7 +9,15 @@ class Calendar extends StatelessWidget {
     return TableCalendar(
         focusedDay: DateTime.now(),
         firstDay: DateTime(1800),
-        lastDay: DateTime(3000)
+        lastDay: DateTime(3000),
+        headerStyle: HeaderStyle(
+          formatButtonVisible: false,
+          titleCentered: true,
+          titleTextStyle: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 16.0,
+          )
+        ),
     );
   }
 }
